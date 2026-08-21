@@ -1,4 +1,4 @@
-# Ubuntu Rust Development Container
+# Ubuntu Rust DevContainer for Ubuntu distro development
 
 A ready-to-use [Dev Container](https://containers.dev/) for Rust software development on Ubuntu 26.04.
 
