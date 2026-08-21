@@ -38,6 +38,17 @@ A ready-to-use [Dev Container](https://containers.dev/) for Rust software develo
 - [xh](https://github.com/ducaale/xh) — HTTP client
 - curl
 
+### Ubuntu Distro Development
+
+- [git-buildpackage](https://honk.sigxcpu.org/piki/projects/git-buildpackage/) (`gbp`) — Git-based package building workflow
+- [sbuild](https://wiki.debian.org/sbuild) — Debian/Ubuntu package builder using chroots
+- [ubuntu-dev-tools](https://launchpad.net/ubuntu-dev-tools) — collection of Ubuntu development utilities
+- [devscripts](https://salsa.debian.org/debian/devscripts) — scripts for Debian package maintainers
+- [dh-make](https://salsa.debian.org/debian/dh-make) — tool to prepare Debian packaging from upstream source
+- [dh-cargo](https://salsa.debian.org/rust-team/dh-cargo) — Debhelper buildsystem for Rust crates
+- [autopkgtest](https://salsa.debian.org/ci-team/autopkgtest) — automatic package testing framework
+- [cargo-vendor-filterer](https://github.com/AmateurECE/cargo-vendor-filterer) — vendor Rust dependencies with platform filtering
+
 ### Shells
 
 - Fish (default entrypoint)
