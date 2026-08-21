@@ -68,7 +68,7 @@ mkdir .devcontainer
 cat << EOF
 {
     "name": "Ubuntu Rust Development Container",
-    "image": "ghcr.io/rmcnew/ubuntu-26.04-rust-1.93-devcontainer:latest"
+    "image": "ghcr.io/canonical/ubuntu-26.04-rust-1.93-devcontainer:latest"
 }
 EOF
 ```
