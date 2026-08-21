@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-To do use this DevContainer development or updates, you need:
+To develop or update this DevContainer, you need:
 
 1. **[Docker](https://www.docker.com/products/docker-desktop)**, **[Podman](https://podman.io/docs/installation)**, or a [OCI Container-compliant alternative](https://code.visualstudio.com/remote/advancedcontainers/docker-options)) installed and running.
 2. **[DevContainer CLI](https://github.com/devcontainers/cli)** to add DevContainer configuration into the development container image.
@@ -57,7 +57,7 @@ After you have verfified the DevContainer configuration and tooling, build the f
 
 ```bash
 devcontainer build --workspace-folder . \
-  --image-name ghcr.io/YOUR_GITHUB_USERNAME/my-devcontainer:latest 
+  --image-name ghcr.io/YOUR_GITHUB_USERNAME/my-devcontainer:latest
 ```
 
 This step and the following steps use the GitHub Container Registry (ghcr.io) as the example container repository.  This is also why "YOUR_GITHUB_USERNAME" is used.  Please adjust container registry URL and account username as needed.
