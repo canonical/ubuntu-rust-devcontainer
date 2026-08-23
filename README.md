@@ -65,7 +65,7 @@ To use this Dev Container, you need:
 ```bash
 cd my_project
 mkdir .devcontainer
-cat << EOF
+cat << EOF > devcontainer.json
 {
     "name": "Ubuntu Rust Development Container",
     "image": "ghcr.io/canonical/ubuntu-26.04-rust-1.93-devcontainer:latest"
