@@ -20,6 +20,8 @@ A ready-to-use [Dev Container](https://containers.dev/) for Rust software develo
 - cargo-audit (check auditable binaries for vulnerabilities)
 - cargo-deny (lint project dependency graph)
 - cargo-vet (ensure dependencies have been audited by a trusted entity)
+- cargo-mutants (mutation testing tool for Rust)
+- cargo-outdated (display when dependencies have newer versions available)
 
 ### Build Tools
 
