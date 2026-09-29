@@ -10,8 +10,9 @@ RUN apt-get update \
         build-essential pkgconf libssl-dev make clang lld \
         rust-1.93-all cargo rustc rust-clippy rustfmt rust-miri rust-1.93-src rust-1.93-doc \
         vim git curl just bacon xh hx \
-        hyperfine ripgrep cargo-auditable \
+        hyperfine ripgrep cargo-auditable cargo-mutants cargo-outdated \
         bash fish \
+    && cargo install --locked --root /usr cargo-audit cargo-deny cargo-vet \
     && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/*
 
