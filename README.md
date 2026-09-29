@@ -17,6 +17,9 @@ A ready-to-use [Dev Container](https://containers.dev/) for Rust software develo
 - Rustfmt (formatter)
 - Miri (interpreter for detecting undefined behavior)
 - cargo-auditable (for auditable builds)
+- cargo-audit (check auditable binaries for vulnerabilities)
+- cargo-deny (lint project dependency graph)
+- cargo-vet (ensure dependencies have been audited by a trusted entity)
 
 ### Build Tools
 
