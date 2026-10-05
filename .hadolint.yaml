@@ -1,0 +1,11 @@
+# .hadolint.yaml
+ignored:
+  - DL3008 # Don't require pinning apt package versions
+  - DL3015 # Install recommends is okay for a DevContainer
+  - DL3067 # Copy the filesystem
+  - DL3066 # root user is resolvable
+  - DL3002 # last user is root to allow devcontainer server install
+
+# Optional: Change failure behavior rather than completely ignoring rules
+failure-threshold: warning
+
