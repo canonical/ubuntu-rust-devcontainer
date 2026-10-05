@@ -11,7 +11,6 @@ Usually, DevContainers will only be made for Ubuntu LTS releases.  Interim relea
 `ubuntu-26.04-rust-1.93-distro` - the Ubuntu distro Ubuntu Rust DevContainer based on Ubuntu 26.04 LTS and Rust 1.93.1
 
 ## Project Structure
-`.devcontainer/devcontainer.json` - configuration used to build and load a DevContainer in a supporting editor or IDE
 `.devcontainer/Containerfile` - OCI-compliant container configuration to build the DevContainer image
 `DEVELOP.md` - instructions about how to develop, update, and publish the DevContainer
 `LICENSE` - the license file for this project
