@@ -1,6 +1,5 @@
 {
     "name": "Ubuntu Rust Development Container",
-    "initializeCommand": "echo 'FROM scratch' | docker build -t scratch-alias -",
     "dockerFile": "Containerfile",
     "customizations": {
         "vscode": {

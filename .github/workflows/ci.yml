@@ -33,9 +33,6 @@ jobs:
           fi
           echo "All tracked filenames are valid ASCII."
 
-      - name: Seed scratch-alias
-        run: "tar cv --files-from /dev/null | docker import - scatch-alias"
-
       - name: Build devcontainer
         uses: devcontainers/ci@v0.3
         with:
