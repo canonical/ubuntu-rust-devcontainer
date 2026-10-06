@@ -1,6 +1,4 @@
 ARG UBUNTU_RELEASE=26.04
-ARG BASE_IMAGE=scratch-alias
-
 FROM ubuntu:$UBUNTU_RELEASE AS builder
 
 RUN apt-get update \
@@ -15,10 +13,6 @@ RUN apt-get update \
     && cargo install --locked --root /usr cargo-audit cargo-deny cargo-vet \
     && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/*
-
-
-FROM ${BASE_IMAGE}
-COPY --from=builder / /
 
 USER root
 
