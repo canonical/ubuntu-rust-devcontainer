@@ -58,7 +58,7 @@ Ports **8000** and **8080** are forwarded by default, useful for web servers and
 
 ## Prerequisites
 
-To use this Dev Container, you need:
+To use this DevContainer, you need:
 
 1. **[Docker](https://www.docker.com/products/docker-desktop)**, **[Podman](https://podman.io/docs/installation)**, (or a [OCI Container-compliant alternative](https://code.visualstudio.com/remote/advancedcontainers/docker-options)) installed and running.
 2. **[Visual Studio Code](https://code.visualstudio.com/)** or [another DevContainer-aware editor](https://containers.dev/supporting) installed on your machine.
@@ -70,12 +70,14 @@ To use this Dev Container, you need:
 ```bash
 cd my_project
 mkdir .devcontainer
-cat << EOF > devcontainer.json
+cd .devcontainer
+```
+Create a text file named `.devcontainer.json` with the following contents:
+```none
 {
     "name": "Ubuntu Rust DevContainer",
     "image": "ghcr.io/canonical/ubuntu-26.04-rust-1.93-devcontainer:latest"
 }
-EOF
 ```
 
 ### 2. Open in VS Code (or your preferred editor)
@@ -91,7 +93,7 @@ When VS Code detects the `.devcontainer` folder, it will prompt you to **"Reopen
 1. Open the Command Palette (`F1` or `Ctrl+Shift+P`)
 2. Select **Dev Containers: Reopen in Container**
 
-VS Code will build the container image (this may take a few minutes the first time) and then reconnect to the running container.
+VS Code will pull and start the container image (this may take a few minutes the first time) and then reconnect to the running container.
 
 ### 4. Examine the container environment
 
@@ -115,7 +117,7 @@ cargo run
 
 ## How It Works
 
-The Dev Containers extension uses the files in the `.devcontainer` directory:
+The DevContainers extension uses the files in the `.devcontainer` directory:
 
 - **`devcontainer.json`** — Configuration for the container name, extensions, forwarded ports, and runtime arguments.
 
