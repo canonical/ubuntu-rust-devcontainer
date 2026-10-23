@@ -79,17 +79,19 @@ If you encounter any errors, ensure that your container registry account and cre
 
 ### 8. Use the published DevContainer image
 
-After the DevContainer is published, it can be used in projects by adding the required configuration and using editors that DevContainers:
+After the DevContainer is published, it can be used in projects by adding the required configuration and using editors that support DevContainers:
 
 ```bash
 cd my_project
 mkdir .devcontainer
-cat << EOF
+cd .devcontainer
+```
+Create a text file named `.devcontainer.json` with the following contents:
+```none
 {
   "name": "My Dev Container",
   "image": "ghcr.io/YOUR_GITHUB_USERNAME/my-devcontainer:latest"
 }
-EOF
 ```
 
 
