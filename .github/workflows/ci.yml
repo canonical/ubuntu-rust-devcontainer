@@ -7,6 +7,8 @@ on:
       - main
       - ubuntu-26.04-rust-1.93
       - ubuntu-26.04-rust-1.93-distro
+      - ubuntu-26.10-rust-1.97
+      - ubuntu-26.10-rust-1.97-distro
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
