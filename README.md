@@ -75,7 +75,7 @@ cd .devcontainer
 Create a text file named `.devcontainer.json` with the following contents:
 ```none
 {
-    "name": "Ubuntu Rust DevContainer",
+    "name": "Ubuntu 26.04 Rust 1.93 DevContainer",
     "image": "ghcr.io/canonical/ubuntu-26.04-rust-1.93-devcontainer:latest"
 }
 ```
