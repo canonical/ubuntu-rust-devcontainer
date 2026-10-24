@@ -1,16 +1,16 @@
 # Ubuntu Rust DevContainer
 
-A ready-to-use [Dev Container](https://containers.dev/) for Rust software development on Ubuntu 26.04.
+A ready-to-use [Dev Container](https://containers.dev/) for Rust software development on Ubuntu 26.10.
 
 ## What's Included
 
 ### Base Image
 
-- **Ubuntu 26.04** base image
+- **Ubuntu 26.10** base image
 
 ### Rust Toolchain
 
-- Rust 1.93 (compiler, standard library, documentation, and source)
+- Rust 1.97 (compiler, standard library, documentation, and source)
 - Cargo (package manager)
 - rust-analyzer (IDE support via VS Code extension)
 - Clippy (linter)
@@ -76,7 +76,7 @@ Create a text file named `.devcontainer.json` with the following contents:
 ```none
 {
     "name": "Ubuntu Rust DevContainer",
-    "image": "ghcr.io/canonical/ubuntu-26.04-rust-1.93-devcontainer:latest"
+    "image": "ghcr.io/canonical/ubuntu-26.10-rust-1.97-devcontainer:latest"
 }
 ```
 
