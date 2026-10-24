@@ -1,12 +1,12 @@
 # Ubuntu Rust DevContainer
 
-A ready-to-use [Dev Container](https://containers.dev/) for Rust software development on Ubuntu 26.04.
+A ready-to-use [DevContainer](https://containers.dev/) for Rust software development on Ubuntu 26.04.
 
 ## What's Included
 
 ### Base Image
 
-- **Ubuntu 26.04** base image
+- **Ubuntu 26.04 LTS** base image
 
 ### Rust Toolchain
 
