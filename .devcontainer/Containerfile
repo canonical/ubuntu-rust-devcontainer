@@ -1,4 +1,4 @@
-ARG UBUNTU_RELEASE=26.04
+ARG UBUNTU_RELEASE=26.10
 FROM ubuntu:$UBUNTU_RELEASE AS builder
 
 RUN apt-get update \
@@ -6,7 +6,7 @@ RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y \
         ca-certificates \
         build-essential pkgconf libssl-dev make clang lld \
-        rust-1.93-all cargo rustc rust-clippy rustfmt rust-miri rust-1.93-src rust-1.93-doc \
+        rust-1.97-all cargo rustc rust-clippy rustfmt rust-miri rust-1.97-src rust-1.97-doc \
         vim git curl just bacon xh hx \
         hyperfine ripgrep cargo-auditable cargo-mutants cargo-outdated \
         bash fish \
