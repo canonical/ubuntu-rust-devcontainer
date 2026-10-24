@@ -1,6 +1,6 @@
 # Ubuntu Rust DevContainer for Ubuntu distro development
 
-A ready-to-use [Dev Container](https://containers.dev/) for Ubuntu distro Rust software development on Ubuntu 26.10.
+A ready-to-use [DevContainer](https://containers.dev/) for Ubuntu distro Rust software development on Ubuntu 26.10.
 
 ## What's Included
 
@@ -86,7 +86,7 @@ cd .devcontainer
 Create a text file named `.devcontainer.json` with the following contents:
 ```none
 {
-    "name": "Ubuntu Rust Distro DevContainer",
+    "name": "Ubuntu 26.10 Rust 1.97 Distro DevContainer",
     "image": "ghcr.io/canonical/ubuntu-26.10-rust-1.97-distro-devcontainer:latest"
 }
 ```
