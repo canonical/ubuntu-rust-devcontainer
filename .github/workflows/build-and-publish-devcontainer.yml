@@ -34,7 +34,7 @@ jobs:
       - name: Build and Push Dev Container Image
         uses: devcontainers/ci@v0.3
         with:
-          imageName: ghcr.io/canonical/${{ github.ref_name }}
+          imageName: ghcr.io/canonical/${{ github.ref_name }}-devcontainer
           imageTag: latest
           push: always
 
