@@ -8,21 +8,33 @@ on:
       - ubuntu-26.10-rust-1.97
       - ubuntu-26.10-rust-1.97-distro
   schedule:
-    # Triggers the workflow every Monday at 00:00 UTC
-    - cron: '0 0 * * 1'
+    # Triggers every Wednesday at 00:00 UTC
+    - cron: '0 0 * * 3'
   workflow_dispatch: # Allows manual triggering from the Actions tab
 
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
-    if: github.ref_name != 'main'
     permissions:
       contents: read
       packages: write # Required to publish to GHCR
+    strategy:
+      fail-fast: false
+      matrix:
+        branch:
+          - ubuntu-26.04-rust-1.93
+          - ubuntu-26.04-rust-1.93-distro
+          - ubuntu-26.10-rust-1.97
+          - ubuntu-26.10-rust-1.97-distro
+    # On push, only run the matrix entry matching the pushed branch.
+    # On schedule or manual dispatch from main, run all matrix branches.
+    if: github.event_name != 'push' || matrix.branch == github.ref_name
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          ref: ${{ matrix.branch }}
 
       - name: Log in to GitHub Container Registry (GHCR)
         uses: docker/login-action@v3
@@ -34,7 +46,6 @@ jobs:
       - name: Build and Push Dev Container Image
         uses: devcontainers/ci@v0.3
         with:
-          imageName: ghcr.io/canonical/${{ github.ref_name }}-devcontainer
+          imageName: ghcr.io/canonical/${{ matrix.branch }}-devcontainer
           imageTag: latest
           push: always
-
