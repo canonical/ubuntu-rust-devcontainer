@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      packages: write # Required to publish to GHCR
+      packages: write
     strategy:
       fail-fast: false
       matrix:
@@ -26,17 +26,20 @@ jobs:
           - ubuntu-26.04-rust-1.93-distro
           - ubuntu-26.10-rust-1.97
           - ubuntu-26.10-rust-1.97-distro
-    # On push, only run the matrix entry matching the pushed branch.
-    # On schedule or manual dispatch from main, run all matrix branches.
-    if: github.event_name != 'push' || matrix.branch == github.ref_name
 
     steps:
+      - name: Skip non-matching push branch
+        if: ${{ github.event_name == 'push' && github.ref_name != matrix.branch }}
+        run: echo "Skipping ${{ matrix.branch }} because this push was for ${{ github.ref_name }}"
+
       - name: Checkout code
+        if: ${{ github.event_name != 'push' || github.ref_name == matrix.branch }}
         uses: actions/checkout@v4
         with:
           ref: ${{ matrix.branch }}
 
       - name: Log in to GitHub Container Registry (GHCR)
+        if: ${{ github.event_name != 'push' || github.ref_name == matrix.branch }}
         uses: docker/login-action@v3
         with:
           registry: ghcr.io
@@ -44,6 +47,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and Push Dev Container Image
+        if: ${{ github.event_name != 'push' || github.ref_name == matrix.branch }}
         uses: devcontainers/ci@v0.3
         with:
           imageName: ghcr.io/canonical/${{ matrix.branch }}-devcontainer
