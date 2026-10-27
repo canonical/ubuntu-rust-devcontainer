@@ -8,8 +8,8 @@ on:
       - ubuntu-26.10-rust-1.97
       - ubuntu-26.10-rust-1.97-distro
   schedule:
-    # Triggers every Monday at 00:00 UTC
-    - cron: '0 0 * * 1'
+    # Triggers every Wednesday at 00:00 UTC
+    - cron: '0 0 * * 3'
   workflow_dispatch: # Allows manual triggering from the Actions tab
 
 jobs:
