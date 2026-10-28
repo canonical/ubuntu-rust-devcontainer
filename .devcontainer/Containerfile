@@ -12,7 +12,7 @@ RUN apt-get update \
         hyperfine ripgrep cargo-auditable cargo-mutants cargo-outdated \
         bash fish \
         autopkgtest dh-make dh-cargo git-buildpackage sbuild ubuntu-dev-tools devscripts \
-    && cargo install --locked --root /usr cargo-audit cargo-deny cargo-vet cargo-vendor-filterer \
+    && cargo install --locked --root /usr cargo-audit cargo-deny cargo-vet cargo-vendor-filterer ubucargo lpcli \
     && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/*
 
