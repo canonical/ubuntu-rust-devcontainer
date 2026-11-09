@@ -1,0 +1,75 @@
+name: Build and Publish DevContainer
+
+on:
+  schedule:
+    # Triggers the workflow every Monday at 00:00 UTC
+    - cron: '0 0 * * 1'
+  workflow_dispatch: # Allows manual triggering from the Actions tab
+
+jobs:
+  discover-branches:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    outputs:
+      branches: ${{ steps.branches.outputs.branches }}
+      has_branches: ${{ steps.branches.outputs.has_branches }}
+    steps:
+      - name: Find non-main branches
+        id: branches
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const crypto = require('crypto');
+            const branches = await github.paginate(github.rest.repos.listBranches, {
+              ...context.repo,
+              per_page: 100,
+            });
+            const images = new Set();
+            const builds = branches.filter(branch => branch.name !== 'main').map(branch => {
+              let image = branch.name;
+              // Preserve valid image names; disambiguate branches that need normalization.
+              if (!/^[a-z0-9]+(?:(?:[._]|__|-+)[a-z0-9]+)*$/.test(image)) {
+                const slug = image.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '') || 'branch';
+                const hash = crypto.createHash('sha256').update(image).digest('hex').slice(0, 12);
+                image = `${slug}-${hash}`;
+              }
+              if (images.has(image)) throw new Error(`Duplicate image name: ${image}`);
+              images.add(image);
+              return { branch: branch.name, sha: branch.commit.sha, image };
+            });
+            core.setOutput('branches', JSON.stringify(builds));
+            core.setOutput('has_branches', builds.length > 0);
+
+  build-and-push:
+    name: Build and push ${{ matrix.branch }}
+    needs: discover-branches
+    if: needs.discover-branches.outputs.has_branches == 'true'
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include: ${{ fromJSON(needs.discover-branches.outputs.branches) }}
+    permissions:
+      contents: read
+      packages: write # Required to publish to GHCR
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ matrix.sha }}
+
+      - name: Log in to GitHub Container Registry (GHCR)
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and Push Dev Container Image
+        uses: devcontainers/ci@v0.3
+        with:
+          imageName: ghcr.io/canonical/${{ matrix.image }}
+          imageTag: latest
+          push: always
