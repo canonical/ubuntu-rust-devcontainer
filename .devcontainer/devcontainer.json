@@ -1,5 +1,5 @@
 {
-    "name": "Ubuntu 26.04 Rust 1.93 DevContainer",
+    "name": "Ubuntu 26.04 Rust 1.97 DevContainer",
     "dockerFile": "Containerfile",
     "customizations": {
         "vscode": {
